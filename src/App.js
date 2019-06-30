@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component ,Fragment} from 'react';
+import { CSSTransition } from 'react-transition-group';
+// CSSTransition是一个动画组件
+import './style.css'
+class App extends Component{
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    constructor(props){
+        super(props);
+        this.state = {
+            show : true
+        }
+        this.handleToggole = this.handleToggole.bind(this);
+    }
+
+    render(){
+        return (
+            <Fragment>
+              <CSSTransition>
+                <div>hello</div>
+              </CSSTransition>
+              <button onClick={this.handleToggole}>toggle</button>
+            </Fragment>
+        )
+    }
+
+    handleToggole(){
+        this.setState({
+            show:this.state.show ?false : true
+        })
+    }
 }
 
 export default App;
